@@ -1,4 +1,6 @@
 const { Router } = require('express');
+const { conn } = require('../db')
+const { Country, Activity } = conn.models;
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
 
@@ -8,12 +10,13 @@ const router = Router();
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
 
-router.get('/countries', (req, res) => {
+router.get('/countries', async (req, res) => {
   const { name } = req.query
   if (name) {
     res.json(name)
   } else {
-    res.send('No se encontro')
+    const allCountries = await Country.findAll()
+    res.json(allCountries)
   }
 })
 
