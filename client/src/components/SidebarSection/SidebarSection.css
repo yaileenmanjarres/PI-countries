@@ -1,0 +1,28 @@
+.section-container {
+  display: grid;
+  width: 100%;
+  grid-template-areas: "icon title" 
+                        "options options";
+}
+
+.section-icon {
+  width: 70px;
+  font-size: 20px;
+  grid-area: icon;
+}
+.icon {
+  color: rgb(4, 170,109);;
+}
+
+.section-title {
+  width: 130px;
+  font-weight: bold;
+  grid-area: title;
+}
+
+.section-options {
+  grid-area: options;
+  height: 30px;
+  width: 100%;
+  background-color: blue;
+}

@@ -13,12 +13,12 @@ const router = Router();
 
 router.get('/countries', async (req, res) => {
   const { name } = req.query
-  const { page } = req.body
-  const offset = page ? (page === 1 ? 0 : 10 * page) : 0
+  // const { page } = req.body
+  // const offset = page ? (page === 1 ? 0 : 10 * page) : 0
   if (name) {
     const nameCountry = await Country.findAll({
-      limit: 10,
-      offset,
+      // limit: 10,
+      // offset,
       where: {
         name: { [Op.like]: `%${name.replace(/^\w/, (letter) => letter.toUpperCase())}%` }
       }
@@ -26,8 +26,8 @@ router.get('/countries', async (req, res) => {
     res.json(nameCountry)
   } else {
     const allCountries = await Country.findAll({
-      limit: 10,
-      offset,
+      // limit: 10,
+      // offset,
       attributes: ['id', 'name', 'flag', 'region', 'capital']
     })
     res.json(allCountries)
