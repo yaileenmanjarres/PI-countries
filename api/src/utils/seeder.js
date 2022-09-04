@@ -14,8 +14,13 @@ async function getAllCountries() {
       capital: country.capital ? country.capital[0] : 'Not specified',
       subregion: country.subregion,
       area: country.area,
-      population: country.population
-
+      population: country.population,
+      activities: [{
+        name: "Ski",
+        difficulty: 1,
+        duration: 5,
+        season: "invierno"
+      }]
     }))
     return allCountries
   } catch (error) {
@@ -25,7 +30,9 @@ async function getAllCountries() {
 
 const seedDatabase = async () => {
   const countries = await getAllCountries()
-  await Country.bulkCreate(countries)
+  await Country.bulkCreate([countries[0], countries[1]], {
+    include: [Activity]
+  })
 }
 
 module.exports = {

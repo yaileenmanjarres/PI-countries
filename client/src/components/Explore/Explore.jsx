@@ -1,22 +1,23 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import './Explore.css'
 import SidebarSection from '../SidebarSection/SidebarSection'
-import { useDispatch, useSelector } from "react-redux"
-import { getAllCountries } from '../../redux/actions/actions'
+import Form from '../Form/Form'
+//import { useDispatch, useSelector } from "react-redux"
+//import { getAllCountries } from '../../redux/actions/actions'
 
 const sidebarSections = [
-  { iconTitle: 'fas fa-map-marked-alt', title: 'Region', options: ['Africa', 'America', 'Asia', 'Europe', 'Oceania'] },
-  { iconTitle: 'fas fa-users', title: 'Population', options: ['upward', 'falling'] },
-  { iconTitle: 'fas fa-chart-bar', title: 'Area', options: ['upward', 'falling'] },
-  { iconTitle: 'fas fa-hiking', title: 'Activities', options: [' Summer', 'Fall', 'Winter', 'Spring', 'All the activities'] },
+  { iconTitle: 'fas fa-map-marked-alt', title: 'Filter by region', option: 'filterRegion' },
+  { iconTitle: 'fas fa-chart-bar', title: 'Alphabetical order', option: 'alphabetical' },
+  { iconTitle: 'fas fa-users', title: 'Order by population', option: 'orderPopulation' },
+  { iconTitle: 'fas fa-hiking', title: 'Activities', option: 'activities' }
 ]
 
 export function Explore() {
   // const dispatch = useDispatch()
   // dispatch(getAllCountries())
-  const [sidebarState, setSidebarState] = useState('closed')
+  const [sidebarState, setSidebarState] = useState('open')
 
-  const [shownCountries, setShownCountries] = useState([])
+  //const [shownCountries, setShownCountries] = useState([])
 
   function handleOpenSidebar() {
     if (sidebarState === 'closed') {
@@ -26,10 +27,10 @@ export function Explore() {
     }
   }
 
-  useEffect(async() => {
-    // const countries = useSelector((state)=>state.countries)
-    // console.log(countries);
-  }, [])
+  // useEffect(async() => {
+  //   // const countries = useSelector((state)=>state.countries)
+  //   // console.log(countries);
+  // }, [])
 
   return (
     <div id='main'>
@@ -63,15 +64,28 @@ export function Explore() {
                   sidebarOpen={sidebarState === 'open'}
                   icon={section.iconTitle}
                   title={section.title}
-                  options={section.options}
+                  option={section.option}
                 />
               ))
             }
           </div>
           <div>
           </div>
+          {
+            sidebarState === 'closed'
+              ? <span className='collapse-container' onClick={handleOpenSidebar}>
+                <i className="fas fa-caret-right"></i>
+              </span>
+              :
+              <div className='collapse-container' onClick={handleOpenSidebar}> Collapse
+                <span >
+                  <i className="fas fa-caret-left"></i>
+                </span>
+              </div>
+          }
         </div>
         <div id='lists'>
+          <Form />
         </div>
       </div>
 

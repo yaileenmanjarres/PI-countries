@@ -11,7 +11,7 @@
 
 #nav-menu-logo {
   display: flex;
-  column-gap: 16px;
+  column-gap: 8px;
   align-items: center;
 }
 
@@ -31,7 +31,7 @@
 
 .logo-icon {
   font-size: 24px;
-  color:rgb(4, 170,109);;
+  color: rgb(4, 170, 109);
 }
 
 #logo-text {
@@ -55,7 +55,8 @@
 }
 
 #search-input:focus {
-  outline: 1px solid rgb(4, 170,109);;
+  outline: 1px solid rgb(4, 170, 109);
+  ;
 }
 
 #search-icon {
@@ -74,7 +75,6 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  column-gap: 20px;
 }
 
 .sidebar-closed {
@@ -82,23 +82,40 @@
 }
 
 .sidebar-open {
-  width: 200px;
+  width: 300px;
 }
 
 #controls {
   display: flex;
   flex-direction: column;
-  padding-top: 20px;
-  row-gap: 35px;
+  padding-top: 40px;
+  row-gap: 16px;
   width: 100%;
 }
+
+.collapse-container {
+  padding: 16px 25px;
+  cursor: pointer;
+  color: rgb(53, 53, 53);
+  display: flex;
+  column-gap: 16px;
+}
+
+.collapse-container:hover {
+  color: rgb(4, 170, 109);
+}
+
+.collapse-container i {
+  font-size: 20px;
+}
+
 
 #lists {
   height: calc(100vh - 57px);
   width: 100%;
   border-left: 1px solid #eee;
   border-top: 1px solid #eee;
-  background-color: red;
+  position: relative;
 }
 
 #pagination {

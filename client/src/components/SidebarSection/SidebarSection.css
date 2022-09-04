@@ -1,28 +1,42 @@
 .section-container {
-  display: grid;
-  width: 100%;
-  grid-template-areas: "icon title" 
-                        "options options";
+  display: flex;
+  flex-direction: column;
+}
+
+.section-header {
+  display: flex;
+
 }
 
 .section-icon {
   width: 70px;
   font-size: 20px;
-  grid-area: icon;
 }
+
 .icon {
-  color: rgb(4, 170,109);;
+  color: rgb(4, 170, 109);
 }
 
 .section-title {
-  width: 130px;
   font-weight: bold;
-  grid-area: title;
+  white-space: nowrap;
+  text-align: start;
+  width: 180px;
+}
+
+.show-title {
+  visibility: visible;
+}
+
+.hide-title {
+  width: 0;
+  visibility: hidden;
 }
 
 .section-options {
-  grid-area: options;
-  height: 30px;
-  width: 100%;
-  background-color: blue;
+  height: 100px;
+  /* width: 100%; */
+  /* background-color: #eee; */
+  /* border-bottom: 1px solid #ddd; */
+  margin: 8px;
 }
